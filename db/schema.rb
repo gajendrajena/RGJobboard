@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2020_03_09_213418) do
   enable_extension "plpgsql"
 
   create_table "categories", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
+    t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -40,21 +40,21 @@ ActiveRecord::Schema.define(version: 2020_03_09_213418) do
   end
 
   create_table "posts", id: :serial, force: :cascade do |t|
-    t.integer "user_id"
-    t.string "title", limit: 255
-    t.string "location", limit: 255
+    t.integer "user_id", default: 1
+    t.string "title"
+    t.string "location"
     t.integer "job_type"
     t.text "description"
-    t.string "company_name", limit: 255
-    t.string "company_url", limit: 255
-    t.string "company_logo", limit: 255
+    t.string "company_name"
+    t.string "company_url"
+    t.string "company_logo"
     t.integer "how_to_apply"
-    t.string "how_to_apply_address", limit: 255
-    t.string "contact_email", limit: 255
+    t.string "how_to_apply_address"
+    t.string "contact_email"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "published_at"
-    t.string "rate", limit: 255
+    t.string "rate"
     t.integer "status", default: 0, null: false
     t.index ["status"], name: "index_posts_on_status"
     t.index ["user_id"], name: "index_posts_on_user_id"
@@ -62,9 +62,9 @@ ActiveRecord::Schema.define(version: 2020_03_09_213418) do
 
   create_table "raw_post_data", id: :serial, force: :cascade do |t|
     t.integer "source"
-    t.string "identifier", limit: 255
-    t.string "term", limit: 255
-    t.string "location", limit: 255
+    t.string "identifier"
+    t.string "term"
+    t.string "location"
     t.text "data"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -72,16 +72,17 @@ ActiveRecord::Schema.define(version: 2020_03_09_213418) do
   end
 
   create_table "settings", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
-    t.string "value", limit: 255
+    t.string "name"
+    t.string "value"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["name"], name: "index_settings_on_name"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
-    t.string "email", limit: 255, default: "", null: false
-    t.string "encrypted_password", limit: 255, default: "", null: false
-    t.string "reset_password_token", limit: 255
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer "sign_in_count", default: 0, null: false
@@ -96,12 +97,12 @@ ActiveRecord::Schema.define(version: 2020_03_09_213418) do
   end
 
   create_table "votes", id: :serial, force: :cascade do |t|
+    t.string "votable_type"
     t.integer "votable_id"
-    t.string "votable_type", limit: 255
+    t.string "voter_type"
     t.integer "voter_id"
-    t.string "voter_type", limit: 255
     t.boolean "vote_flag"
-    t.string "vote_scope", limit: 255
+    t.string "vote_scope"
     t.integer "vote_weight"
     t.datetime "created_at"
     t.datetime "updated_at"

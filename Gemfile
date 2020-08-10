@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-ruby '2.5.7'
+ruby '2.6.5'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -41,6 +41,7 @@ gem 'turbolinks'
 gem 'tzinfo-data'
 gem 'validates_formatting_of'
 gem 'webpacker', '~> 4.x'
+gem "figaro"
 
 group :production do
   gem 'rails_12factor'

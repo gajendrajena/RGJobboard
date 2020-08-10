@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :require_user_signed_in, only: [:edit, :create, :update, :destroy]
-  before_action :set_post, only: [:show, :apply_to, :preview, :edit, :update, :destroy, :vote]
+  before_action :set_post, only: [:publish, :show, :apply_to, :preview, :edit, :update, :destroy, :vote]
   before_action :require_user_owns_post, only: [:preview, :edit, :update, :destroy]
 
   def index

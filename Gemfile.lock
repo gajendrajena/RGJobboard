@@ -125,6 +125,8 @@ GEM
     faraday (1.0.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.12.2)
+    figaro (1.2.0)
+      thor (>= 0.14.0, < 2)
     gherkin (5.1.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -344,6 +346,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   dotenv-rails
+  figaro
   google-analytics-rails
   jquery-rails
   listen
@@ -368,7 +371,7 @@ DEPENDENCIES
   webpacker (~> 4.x)
 
 RUBY VERSION
-   ruby 2.5.7p206
+   ruby 2.6.5p114
 
 BUNDLED WITH
    2.1.4
